@@ -2,6 +2,17 @@ const LETTERS = ["B", "I", "N", "G", "O"];
 const RANGES = { B: [1, 15], I: [16, 30], N: [31, 45], G: [46, 60], O: [61, 75] };
 const STORAGE_KEY = "bingo-marker-state-v1";
 
+// Transcribed from the physical sheet (serial 6811532), named by each card's printed ID.
+// Columns in reading order: B, I, N (excl. FREE), G, O.
+const DEFAULT_CARD_DATA = [
+  { name: "Card 235", nums: [5, 3, 2, 11, 1, 24, 21, 30, 25, 22, 36, 44, 38, 39, 53, 57, 54, 51, 55, 65, 68, 69, 70, 67] },
+  { name: "Card 735", nums: [9, 11, 3, 14, 7, 29, 26, 16, 23, 21, 36, 33, 31, 37, 47, 56, 48, 54, 60, 74, 70, 64, 68, 73] },
+  { name: "Card 1235", nums: [7, 4, 11, 9, 12, 26, 19, 30, 23, 28, 35, 40, 37, 41, 51, 60, 57, 54, 49, 70, 73, 75, 66, 65] },
+  { name: "Card 1735", nums: [2, 7, 15, 11, 6, 28, 25, 20, 24, 27, 33, 39, 35, 42, 47, 56, 46, 55, 51, 70, 75, 74, 63, 72] },
+  { name: "Card 2235", nums: [12, 6, 15, 1, 10, 25, 21, 19, 29, 28, 37, 38, 43, 35, 56, 46, 51, 54, 60, 61, 64, 63, 68, 66] },
+  { name: "Card 2735", nums: [7, 4, 11, 5, 3, 29, 23, 17, 27, 19, 38, 35, 42, 37, 49, 59, 56, 57, 58, 64, 68, 62, 75, 73] },
+];
+
 const PRESET_PATTERNS = {
   1: {
     name: "Across",
@@ -150,7 +161,7 @@ let bingoAlerted = {};
 
 function init() {
   if (state.cards.length === 0) {
-    state.cards.push(makeBlankCard("Card 1"));
+    DEFAULT_CARD_DATA.forEach((d) => state.cards.push(makeCardFromNums(d.name, d.nums)));
     saveState();
   }
   setupTabs();
@@ -172,6 +183,18 @@ function init() {
 
 function makeBlankCard(name) {
   return { id: "c" + Date.now() + Math.random().toString(36).slice(2, 7), name, grid: emptyGrid(null) };
+}
+
+function makeCardFromNums(name, nums) {
+  const card = makeBlankCard(name);
+  let i = 0;
+  for (let c = 0; c < 5; c++) {
+    for (let r = 0; r < 5; r++) {
+      if (isFreeCell(r, c)) continue;
+      card.grid[r][c] = nums[i++];
+    }
+  }
+  return card;
 }
 
 function setupTabs() {

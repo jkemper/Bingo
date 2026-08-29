@@ -9,12 +9,19 @@ folder anywhere (e.g. GitHub Pages) and open it on your phone.
 
 ## How to use it
 
-1. **Cards tab** — Add a card for each physical card you're playing. Type the 24 numbers into the
-   grid (the center square is always FREE), or paste all 24 at once into the quick-fill box in this
-   reading order: B column top-to-bottom, then I, then N (skipping FREE), then G, then O.
+1. **Cards tab** — The app ships pre-loaded with the 6 cards from serial 6811532 (named by their
+   printed card ID: 235, 735, 1235, 1735, 2235, 2735), transcribed from the photo. Double check
+   them against the physical cards before playing — worth the 30 seconds since a single wrong digit
+   could cause a false or missed win.
 
-   Numbers are entered manually rather than auto-read from a photo, since a single misread digit
-   on a bingo card could cause a false or missed win — not worth the risk for a real game.
+   To add more cards or fix a number, type into the grid (the center square is always FREE), or
+   paste all 24 at once into the quick-fill box in this reading order: B column top-to-bottom, then
+   I, then N (skipping FREE), then G, then O.
+
+   This pre-fill only applies the first time the app runs with no saved data — "New Game" clears
+   marks, not card numbers, so it won't restore them. If you'd already opened the app before the
+   cards were added, either edit the existing card(s) by hand on the Cards tab, or clear this
+   site's browsing data to pick up the pre-filled set on next load.
 
 2. **Patterns tab** — Games 1–6 come preloaded with common patterns (Across, Letter L, Top &
    Bottom, Block of 4, Plus Sign, Triple Bingo). If tonight's caller describes something different,
