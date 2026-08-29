@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Bingo Card Marker</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231f6feb'/%3E%3Ctext x='50' y='68' font-size='54' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>Bingo Card Marker</h1>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="play">Play</button>
+    <button class="tab-btn" data-tab="cards">Cards</button>
+    <button class="tab-btn" data-tab="patterns">Patterns</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- PLAY TAB -->
+  <section id="tab-play" class="tab-panel active">
+
+    <div class="game-bar">
+      <label for="game-select">Game:</label>
+      <select id="game-select"></select>
+      <span id="pattern-name" class="pattern-name"></span>
+      <button id="new-game-btn" class="btn small">New Game</button>
+    </div>
+
+    <div class="caller-panel">
+      <div class="letter-row" id="letter-row"></div>
+      <div class="number-grid" id="number-grid"></div>
+      <div class="called-history">
+        <div class="called-history-header">
+          <span>Called numbers (<span id="called-count">0</span>)</span>
+          <button id="undo-btn" class="btn tiny">Undo last</button>
+        </div>
+        <div id="called-list" class="called-list"></div>
+      </div>
+    </div>
+
+    <div id="cards-display" class="cards-display"></div>
+
+  </section>
+
+  <!-- CARDS TAB -->
+  <section id="tab-cards" class="tab-panel">
+    <p class="hint">
+      Enter the numbers exactly as printed on your physical card(s). Type numbers separated by
+      spaces/commas into a column's box, or tap cells directly to edit one at a time.
+      The center square is always FREE.
+    </p>
+    <div id="cards-editor"></div>
+    <button id="add-card-btn" class="btn">+ Add Card</button>
+  </section>
+
+  <!-- PATTERNS TAB -->
+  <section id="tab-patterns" class="tab-panel">
+    <p class="hint">
+      Each game below has a preset winning pattern. Tap squares on the grid to adjust it if the
+      caller announces something different tonight, then it's remembered for that game.
+    </p>
+    <div id="patterns-editor"></div>
+  </section>
+
+</main>
+
+<div id="bingo-overlay" class="bingo-overlay hidden">
+  <div class="bingo-box">
+    <div class="bingo-text">BINGO!</div>
+    <div id="bingo-detail" class="bingo-detail"></div>
+    <button id="bingo-dismiss" class="btn">OK</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

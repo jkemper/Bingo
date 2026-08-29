@@ -1,0 +1,9 @@
+{
+  "name": "Bingo Card Marker",
+  "short_name": "Bingo",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4f5f7",
+  "theme_color": "#1f6feb",
+  "icons": []
+}
